@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bhisphc3278hc" path="res://assets/characters/Idle (32x32).png" id="2_n71s4"]
 [ext_resource type="Texture2D" uid="uid://b3achuqj11rql" path="res://assets/characters/Jump (32x32).png" id="4_q62by"]
 [ext_resource type="Texture2D" uid="uid://crim11x75cr8c" path="res://assets/characters/Run (32x32).png" id="5_mmw64"]
-[ext_resource type="Script" path="res://scenes/Camera.gd" id="6_ejgv5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6sqc"]
 atlas = ExtResource("2_n71s4")
@@ -205,9 +204,11 @@ animations = [{
 "speed": 24.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gukkm"]
-radius = 22.5
-height = 60.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfwtv"]
+size = Vector2(39, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxhds"]
+size = Vector2(24, 44.5)
 
 [node name="Main Character" type="CharacterBody2D"]
 position = Vector2(-523, 245)
@@ -222,13 +223,12 @@ animation = &"run"
 autoplay = "default"
 frame_progress = 0.767351
 
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(517, 406)
-limit_left = 0
-limit_bottom = 0
-position_smoothing_enabled = true
-script = ExtResource("6_ejgv5")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(520, 399)
-shape = SubResource("CapsuleShape2D_gukkm")
+position = Vector2(521.5, 398.5)
+shape = SubResource("RectangleShape2D_rfwtv")
+
+[node name="Main Caracter Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main Caracter Area"]
+position = Vector2(520, 402)
+shape = SubResource("RectangleShape2D_jxhds")

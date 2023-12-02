@@ -4,7 +4,6 @@ var animation: AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print_debug(self.position)
 	animation = get_node("animation")
 	animation.animation_looped.connect(_on_finished)
 	
