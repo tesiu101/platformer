@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var point_get: PackedScene
+signal collected_banana
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +19,5 @@ func _on_body_entered(body):
 	var blink = point_get.instantiate()
 	blink.position = self.position
 	add_sibling(blink)
-	
-	
+	emit_signal("collected_banana")
 	queue_free()
