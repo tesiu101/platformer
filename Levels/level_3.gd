@@ -1,6 +1,5 @@
 extends BaseLevel
 
-
 func _ready():
 	super._ready();
-	nextLevel = "level_2"
+	nextLevel = "level_1"

@@ -22,7 +22,7 @@ func _load_level(level_name: String):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mainNode = get_node(".")
-	_load_level("level_1")
+	_load_level("level_3")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
