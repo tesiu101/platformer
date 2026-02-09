@@ -8,7 +8,8 @@ const JUMP_VELOCITY = -1000.0
 @onready var sprite_2d = $Sprite2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var _init_gravity = ProjectSettings.get_setting("physics/2d/default_gravity");
+var currentGravity = _init_gravity;
 var facingLeft = false;
 
 func _physics_process(delta):
@@ -20,17 +21,21 @@ func _physics_process(delta):
 	
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += currentGravity * delta
 		if velocity.y > 0:
 			sprite_2d.animation = "fall"
+			currentGravity = _init_gravity * 1.8
 		else:
 			sprite_2d.animation = "jump"
-	
+	else:
+		currentGravity = _init_gravity;
 	
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	elif !is_on_floor() and Input.is_action_just_released("jump"):
+		velocity.y = 0
 		
 
 	# Get the input direction and handle the movement/deceleration.

@@ -19,10 +19,10 @@ func _load_level(level_name: String):
 		instance.finished.connect(_load_level)
 	
 
-# Called when the node enters the scene tree for the first time.
+# Called when the node enter                                                                        s the scene tree for the first time.
 func _ready():
 	mainNode = get_node(".")
-	_load_level("level_3")
+	_load_level("level_1")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
